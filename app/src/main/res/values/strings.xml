@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="menu_user">User</string>
+    <string name="menu_calendar">Calendar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_setting">Setting</string>
+
+    <string name="discloser_continue">Continue</string>
+
+    <string name="login_login">Login</string>
+    <string name="login_username">User name</string>
+    <string name="login_password">Password</string>
+
+</resources>

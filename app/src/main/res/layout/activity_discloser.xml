@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.DiscloserActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_background_white"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_15sdp"
+            android:padding="@dimen/_20sdp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discloser"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textAlignment="center"
+                android:textSize="@dimen/_25sdp"
+                android:textColor="@color/major"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut Lorem ipsum dolor site amet , consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut "
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_13sdp" />
+            <CheckBox
+                android:id="@+id/check_clinic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/major"
+                android:textStyle="bold"
+                android:text="Accept Terms and Agreements"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_signin"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background_major"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/discloser_continue"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
