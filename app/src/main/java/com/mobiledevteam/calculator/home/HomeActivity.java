@@ -1,8 +1,10 @@
 package com.mobiledevteam.calculator.home;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.view.MenuItem;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -19,7 +22,11 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
+import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
+import com.mobiledevteam.calculator.profile.UserHomeActivity;
+import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
 import java.util.ArrayList;
 
@@ -36,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         _pieMoney = (PieChart)findViewById(R.id.chart_Money);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_home);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         setReady();
     }
     private void setReady(){
@@ -79,14 +89,9 @@ public class HomeActivity extends AppCompatActivity {
         for (int c : COLORS)
             colors.add(c);
         dataSet.setColors(colors);
-        //dataSet.setSelectionShift(0f);
-
-
         dataSet.setValueLinePart1OffsetPercentage(80.f);
         dataSet.setValueLinePart1Length(0.2f);
         dataSet.setValueLinePart2Length(0.4f);
-
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 
         PieData data = new PieData(dataSet);
@@ -98,5 +103,51 @@ public class HomeActivity extends AppCompatActivity {
         // undo all highlights
         _pieMoney.highlightValues(null);
         _pieMoney.invalidate();
+    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_user:
+                    moveToUser();
+                    return true;
+                case R.id.navigation_cal:
+                    moveToCal();
+                    return true;
+                case R.id.navigation_home:
+                    moveToHome();
+                    return true;
+                case R.id.navigation_setting:
+                    moveToSetting();
+                    return true;
+            }
+            return false;
+        }
+    };
+    private void moveToUser(){
+        Intent intent=new Intent(this, UserHomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void moveToCal(){
+        Intent intent=new Intent(this, CalendarHomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void moveToHome() {
+//        Intent intent = new Intent(this, SettingActivity.class);
+//        startActivity(intent);
+//        finish();
+    }
+    private void moveToSetting(){
+        Intent intent=new Intent(this, SettingHomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

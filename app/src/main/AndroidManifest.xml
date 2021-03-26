@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator">
-        <activity android:name=".login.TermActivity"></activity>
+        <activity android:name=".calendar.CalendarHomeActivity"></activity>
+        <activity android:name=".setting.SettingHomeActivity" />
+        <activity android:name=".profile.UserHomeActivity" />
+        <activity android:name=".login.TermActivity" />
         <activity android:name=".login.DiscloserActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".home.HomeActivity" />

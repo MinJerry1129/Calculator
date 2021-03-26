@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_user"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/menu_user" />
     <item
-        android:id="@+id/navigation_event"
+        android:id="@+id/navigation_cal"
         android:icon="@drawable/ic_baseline_date_range_24"
         android:title="@string/menu_calendar" />
     <item
-        android:id="@+id/navigation_chat"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/menu_home" />
     <item
-        android:id="@+id/navigation_history"
+        android:id="@+id/navigation_setting"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/menu_setting" />
 </menu>
