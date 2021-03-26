@@ -11,4 +11,7 @@
     <string name="login_username">User name</string>
     <string name="login_password">Password</string>
 
+    <string name="home_income">Set Income</string>
+    <string name="home_liabilities">Set Liabilities</string>
+
 </resources>

@@ -45,7 +45,7 @@ tools:context=".login.TermActivity">
             <ImageView
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:src="@drawable/chat"/>
+                android:src="@drawable/chart"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
@@ -83,7 +83,7 @@ tools:context=".login.TermActivity">
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signin"
+            android:id="@+id/btn_continue"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/_15sdp"

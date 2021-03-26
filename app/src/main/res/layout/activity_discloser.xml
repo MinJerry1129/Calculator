@@ -30,14 +30,14 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:textSize="@dimen/_13sdp" />
             <CheckBox
-                android:id="@+id/check_clinic"
+                android:id="@+id/check_agree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/major"
                 android:textStyle="bold"
                 android:text="Accept Terms and Agreements"/>
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_continue"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="@dimen/_15sdp"
