@@ -50,9 +50,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:padding="@dimen/_20sdp">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/user_calculate"
                         android:textColor="@color/major"
@@ -60,9 +61,11 @@
                         android:textStyle="bold"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_saving"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_baseline_savings_24"
                         android:background="@drawable/button_background_major"
@@ -71,9 +74,11 @@
                         android:text="@string/user_saving"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_invest"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_baseline_business_center_24"
                         android:background="@drawable/button_background_major"
@@ -82,9 +87,11 @@
                         android:text="@string/user_investment"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_mort"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_baseline_home_24"
                         android:background="@drawable/button_background_major"
@@ -93,9 +100,11 @@
                         android:text="@string/user_mortgage"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_more"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/major"
                         android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
                         android:background="@drawable/button_background_outline_major"
@@ -125,9 +134,11 @@
                         android:textStyle="bold"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_amount"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_baseline_savings_24"
                         android:background="@drawable/button_background_major"
@@ -136,9 +147,11 @@
                         android:text="@string/user_amount"/>
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_period"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_30sdp"
                         android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_baseline_business_center_24"
                         android:background="@drawable/button_background_major"
