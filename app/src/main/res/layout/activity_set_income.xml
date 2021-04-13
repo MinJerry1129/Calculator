@@ -19,6 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:text="Income"
+                android:textStyle="bold"
                 android:textColor="@color/major"
                 android:textAlignment="center"
                 android:textSize="@dimen/_20sdp"/>
@@ -43,7 +44,7 @@
                 <ExpandableListView
                     android:id="@+id/exp_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="60dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                 <ExpandableListView
                     android:id="@+id/exp_repeat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="60dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                     android:layout_height="@dimen/_50sdp"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/major"
-                    android:text="Note"
+                    android:hint="Note"
                     android:background="@drawable/layout_background_white"
                     android:drawableStart="@drawable/ic_baseline_insert_drive_file_24"
                     android:paddingStart="@dimen/_10sdp"
@@ -77,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_30sdp"
                 android:gravity="center">
                 <ImageView
                     android:layout_width="@dimen/_40sdp"
