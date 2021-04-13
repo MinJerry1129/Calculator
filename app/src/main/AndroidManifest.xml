@@ -9,22 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator">
-        <activity android:name=".calendar.CalendarHomeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".setting.SettingHomeActivity"
+        <activity android:name=".home.SetLiabilityActivity"></activity>
+        <activity android:name=".home.SetIncomeActivity" />
+        <activity
+            android:name=".calendar.CalendarHomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".profile.UserHomeActivity"
+        <activity
+            android:name=".setting.SettingHomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".login.TermActivity"
+        <activity
+            android:name=".profile.UserHomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".login.DiscloserActivity"
+        <activity
+            android:name=".login.TermActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".login.LoginActivity"
+        <activity
+            android:name=".login.DiscloserActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".home.HomeActivity"
+        <activity
+            android:name=".login.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait" >
+        <activity
+            android:name=".home.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

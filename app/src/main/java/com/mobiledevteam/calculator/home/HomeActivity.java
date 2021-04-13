@@ -3,7 +3,9 @@ package com.mobiledevteam.calculator.home;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Application;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -13,6 +15,9 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -32,6 +37,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private PieChart _pieMoney;
+    private ImageView _dateList;
     private String[] parties = new String[] {
             "Remaining", "Liabilities"
     };
@@ -43,9 +49,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         _pieMoney = (PieChart)findViewById(R.id.chart_Money);
+        _dateList = (ImageView)findViewById(R.id.img_list);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_home);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        _dateList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
         setReady();
     }
     private void setReady(){
@@ -69,8 +83,34 @@ public class HomeActivity extends AppCompatActivity {
         l.setEnabled(false);
         setData(2, 2);
     }
-    private void setData(int count, float range) {
+    private void showDialog(){
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(HomeActivity.this);
 
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.select_dialog_singlechoice);
+        arrayAdapter.add("Daily");
+        arrayAdapter.add("Weekly");
+        arrayAdapter.add("Bi-weekly");
+        arrayAdapter.add("Monthly");
+        arrayAdapter.add("Semi Annually");
+        arrayAdapter.add("Anually");
+        arrayAdapter.add("Custom");
+
+        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String strName = arrayAdapter.getItem(which);
+            }
+        });
+        builderSingle.show();
+    }
+    private void setData(int count, float range) {
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
