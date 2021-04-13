@@ -35,7 +35,19 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:hint="Username or email address"/>
+            android:hint="Email address"/>
+        <EditText android:id="@+id/input_username"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:textColor="#000"
+            android:background="@drawable/layout_background_white"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:hint="@string/login_username"/>
         <EditText android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
@@ -49,9 +61,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:hint="@string/login_password"/>
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signin"
+            android:id="@+id/btn_signup"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/_15sdp"
@@ -61,7 +72,7 @@
             android:background="@drawable/button_background_major"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
-            android:text="@string/login_login"/>
+            android:text="signup"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,11 +87,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/txt_signup"
+                android:id="@+id/txt_signin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Have you got account? Sign up."/>
+                android:text="Have you got account? Sign In."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

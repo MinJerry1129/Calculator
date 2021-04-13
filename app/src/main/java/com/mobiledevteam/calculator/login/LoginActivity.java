@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.mobiledevteam.calculator.MainActivity;
 import com.mobiledevteam.calculator.R;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private Button _btnSign;
+    private TextView _txtsignup;
     private ArrayList<Category> mIncomeCategory = new ArrayList<>();
     private ArrayList<Category> mLiabilityCategory = new ArrayList<>();
     private ArrayList<String> mRepeatCategort = new ArrayList<>();
@@ -25,10 +27,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         _btnSign = (Button)findViewById(R.id.btn_signin);
+        _txtsignup = (TextView) findViewById(R.id.txt_signup);
         setReady();
     }
     private void setReady(){
-
         mIncomeCategory.add(new Category("0","Salary","salary"));
         mIncomeCategory.add(new Category("1","Business Profit","business"));
         mIncomeCategory.add(new Category("2","Project","project"));
@@ -58,11 +60,19 @@ public class LoginActivity extends AppCompatActivity {
         Common.getInstance().setmIncomeCategory(mIncomeCategory);
         Common.getInstance().setmLiabilityCategory(mLiabilityCategory);
         Common.getInstance().setmRepeatCategory(mRepeatCategort);
-
+        
         _btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, DiscloserActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        _txtsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
                 finish();
             }
