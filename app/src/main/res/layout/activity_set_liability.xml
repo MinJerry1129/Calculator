@@ -22,22 +22,17 @@
                 android:textColor="@color/second"
                 android:textAlignment="center"
                 android:textSize="@dimen/_20sdp"/>
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/layout_background_outline_secondmajor">
-
-                <EditText android:id="@+id/input_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#000"
-                    android:background="#00ffffff"
-                    android:drawableStart="@drawable/ic_baseline_attach_money_24"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginEnd="@dimen/_20sdp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="@dimen/_50sdp"
+                android:inputType="textEmailAddress"
+                android:textColor="#000"
+                android:background="@drawable/layout_background_outline_secondmajor"
+                android:drawableStart="@drawable/ic_baseline_attach_money_24"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,21 +59,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_background_white">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
-                        android:inputType="textEmailAddress"
-                        android:textColor="#000"
-                        android:background="#00ffffff"
-                        android:drawableStart="@drawable/ic_baseline_insert_drive_file_24"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_20sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="@dimen/_50sdp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000"
+                    android:background="@drawable/layout_background_white"
+                    android:drawableStart="@drawable/ic_baseline_insert_drive_file_24"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +80,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:src="@drawable/ic_baseline_cancel_24"
-                    app:tint="@color/second" />
+                    app:tint="@color/second"/>
                 <ImageView
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"

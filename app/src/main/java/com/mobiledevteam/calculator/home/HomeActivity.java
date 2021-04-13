@@ -17,6 +17,7 @@ import android.text.style.StyleSpan;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -30,6 +31,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
+import com.mobiledevteam.calculator.login.DiscloserActivity;
+import com.mobiledevteam.calculator.login.LoginActivity;
 import com.mobiledevteam.calculator.profile.UserHomeActivity;
 import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
@@ -38,6 +41,8 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     private PieChart _pieMoney;
     private ImageView _dateList;
+    private Button _setIncome;
+    private Button _setLiability;
     private String[] parties = new String[] {
             "Remaining", "Liabilities"
     };
@@ -53,6 +58,8 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_home);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        _setIncome = (Button)findViewById(R.id.btn_income);
+        _setLiability = (Button)findViewById(R.id.btn_liabilities);
 
         _dateList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +70,21 @@ public class HomeActivity extends AppCompatActivity {
         setReady();
     }
     private void setReady(){
+        _setIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SetIncomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        _setLiability.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SetLiabilityActivity.class);
+                startActivity(intent);
+            }
+        });
         _pieMoney.setDragDecelerationFrictionCoef(0.95f);
         _pieMoney.getDescription().setEnabled(false);
         _pieMoney.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
