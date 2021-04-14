@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getData() {
-
+        
     }
 
     private void setReady(){
