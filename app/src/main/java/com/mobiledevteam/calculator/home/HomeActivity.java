@@ -30,6 +30,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
+import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
 import com.mobiledevteam.calculator.login.DiscloserActivity;
 import com.mobiledevteam.calculator.login.LoginActivity;
@@ -46,6 +47,8 @@ public class HomeActivity extends AppCompatActivity {
     private String[] parties = new String[] {
             "Remaining", "Liabilities"
     };
+    private int sel_type = 8;
+    private String userid;
     private int[] COLORS = {
             Color.rgb(2, 195, 154), Color.rgb(5, 102, 141)
     };
@@ -60,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         _setIncome = (Button)findViewById(R.id.btn_income);
         _setLiability = (Button)findViewById(R.id.btn_liabilities);
+        userid = Common.getInstance().getUserID();
 
         _dateList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +72,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         setReady();
+        getData();
     }
+
+    private void getData() {
+
+    }
+
     private void setReady(){
         _setIncome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +138,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String strName = arrayAdapter.getItem(which);
+                sel_type = which;
             }
         });
         builderSingle.show();

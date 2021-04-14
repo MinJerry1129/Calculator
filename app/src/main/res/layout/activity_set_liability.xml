@@ -22,7 +22,7 @@
                 android:textColor="@color/second"
                 android:textAlignment="center"
                 android:textSize="@dimen/_20sdp"/>
-            <EditText android:id="@+id/input_email"
+            <EditText android:id="@+id/input_value"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:inputType="textEmailAddress"
@@ -40,9 +40,9 @@
                 android:background="@drawable/layout_background_white"
                 android:orientation="vertical">
                 <ExpandableListView
-                    android:id="@+id/exp"
+                    android:id="@+id/exp_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="60dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,8 +51,9 @@
                 android:background="@drawable/layout_background_white"
                 android:orientation="vertical">
                 <ExpandableListView
+                    android:id="@+id/exp_repeat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="60dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,10 +61,12 @@
                 android:layout_margin="10dp"
                 android:orientation="vertical">
                 <EditText
+                    android:id="@+id/input_note"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:inputType="textEmailAddress"
                     android:textColor="#000"
+                    android:hint="Note"
                     android:background="@drawable/layout_background_white"
                     android:drawableStart="@drawable/ic_baseline_insert_drive_file_24"
                     android:paddingStart="@dimen/_10sdp"
@@ -76,12 +79,14 @@
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/img_cancel"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:src="@drawable/ic_baseline_cancel_24"
                     app:tint="@color/second"/>
                 <ImageView
+                    android:id="@+id/img_add"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginStart="@dimen/_10sdp"

@@ -63,6 +63,7 @@
                 android:layout_margin="10dp"
                 android:orientation="vertical">
                 <EditText
+                    android:id="@+id/input_note"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:inputType="textEmailAddress"
@@ -81,11 +82,13 @@
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/img_cancel"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:src="@drawable/ic_baseline_cancel_24"/>
                 <ImageView
+                    android:id="@+id/img_add"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginStart="@dimen/_10sdp"

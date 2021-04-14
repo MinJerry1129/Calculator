@@ -104,7 +104,6 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(getBaseContext(),"Fail signup", Toast.LENGTH_LONG).show();
                                 }
                             } else {
-
                             }
                         }
                     });
