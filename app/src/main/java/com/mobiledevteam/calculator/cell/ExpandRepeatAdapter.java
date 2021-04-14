@@ -71,9 +71,9 @@ public class ExpandRepeatAdapter extends BaseExpandableListAdapter {
         String child = (String) getChild(groupPosition, childPosition);
         if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
+            convertView = layoutInflater.inflate(R.layout.list_repeat_item, null);
         }
-        TextView groupName = convertView.findViewById(R.id.list_parent);
+        TextView groupName = convertView.findViewById(R.id.list_item);
         groupName.setText(child);
         return convertView;
     }

@@ -12,6 +12,8 @@ public class Common {
     private ArrayList<Category> mLiabilityCategory;
     private ArrayList<String> mRepeatCategory;
 
+    private String userID;
+
 
     public static Common getInstance() {
         return instance;
@@ -26,4 +28,7 @@ public class Common {
 
     public ArrayList<String> getmRepeatCategory() { return mRepeatCategory;}
     public void setmRepeatCategory(ArrayList<String> mRepeatCategory) { this.mRepeatCategory = mRepeatCategory;}
+
+    public String getUserID() {return userID;}
+    public void setUserID(String userID) {this.userID = userID;}
 }

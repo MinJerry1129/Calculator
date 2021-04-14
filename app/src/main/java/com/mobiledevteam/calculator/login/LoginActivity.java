@@ -47,24 +47,24 @@ public class LoginActivity extends AppCompatActivity {
         setReady();
     }
     private void setReady(){
-        mIncomeCategory.add(new Category("0","Salary","salary"));
-        mIncomeCategory.add(new Category("1","Business Profit","business"));
-        mIncomeCategory.add(new Category("2","Project","project"));
-        mIncomeCategory.add(new Category("3","Royalty","royalty"));
-        mIncomeCategory.add(new Category("4","Other","other"));
+        mIncomeCategory.add(new Category("0","Salary",R.drawable.salary));
+        mIncomeCategory.add(new Category("1","Business Profit",R.drawable.business));
+        mIncomeCategory.add(new Category("2","Project",R.drawable.project));
+        mIncomeCategory.add(new Category("3","Royalty",R.drawable.royalty));
+        mIncomeCategory.add(new Category("4","Other",R.drawable.other));
 
-        mLiabilityCategory.add(new Category("0","Condo Fee","condo"));
-        mLiabilityCategory.add(new Category("1","Property Taxes","property"));
-        mLiabilityCategory.add(new Category("2","Mortgage Payment","mortgage"));
-        mLiabilityCategory.add(new Category("3","Cell Phone","phone"));
-        mLiabilityCategory.add(new Category("4","Car Gas","gas"));
-        mLiabilityCategory.add(new Category("5","Car Insurance","insurance"));
-        mLiabilityCategory.add(new Category("6","Electric Bill","electric"));
-        mLiabilityCategory.add(new Category("7","Groceries","groceries"));
-        mLiabilityCategory.add(new Category("8","Gas/Heating","heating"));
-        mLiabilityCategory.add(new Category("9","Tv/Internet","tv"));
-        mLiabilityCategory.add(new Category("10","Water","water"));
-        mLiabilityCategory.add(new Category("11","Secured Line of Credit","secured"));
+//        mLiabilityCategory.add(new Category("0","Condo Fee","condo"));
+//        mLiabilityCategory.add(new Category("1","Property Taxes","property"));
+//        mLiabilityCategory.add(new Category("2","Mortgage Payment","mortgage"));
+//        mLiabilityCategory.add(new Category("3","Cell Phone","phone"));
+//        mLiabilityCategory.add(new Category("4","Car Gas","gas"));
+//        mLiabilityCategory.add(new Category("5","Car Insurance","insurance"));
+//        mLiabilityCategory.add(new Category("6","Electric Bill","electric"));
+//        mLiabilityCategory.add(new Category("7","Groceries","groceries"));
+//        mLiabilityCategory.add(new Category("8","Gas/Heating","heating"));
+//        mLiabilityCategory.add(new Category("9","Tv/Internet","tv"));
+//        mLiabilityCategory.add(new Category("10","Water","water"));
+//        mLiabilityCategory.add(new Category("11","Secured Line of Credit","secured"));
 
         mRepeatCategort.add("Once");
         mRepeatCategort.add("Every Day");
@@ -102,19 +102,17 @@ public class LoginActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Bright_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
+        progressDialog.setMessage("Authenticating...");
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressDialog.setCancelable(false);
         progressDialog.show();
-
-        // TODO: Implement your own signup logic here.
         JsonObject json = new JsonObject();
-        json.addProperty("username",username);
-        json.addProperty("password",password);
+        json.addProperty("username", _email.getText().toString());
+        json.addProperty("password", _password.getText().toString());
 
         try {
             Ion.with(this)
-                    .load(Common.getInstance().getBaseURL()+"api/signup")
+                    .load(Common.getInstance().getBaseURL()+"api/login")
                     .setJsonObjectBody(json)
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
@@ -123,21 +121,27 @@ public class LoginActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             Log.d("result::", result.toString());
                             if (result != null) {
-                                String status = result.get("status").getAsString();
-                                if (status.equals("ok")) {
-                                    Toast.makeText(getBaseContext(),"Signup Success, please login!", Toast.LENGTH_LONG).show();
+                                String id = result.get("userid").toString();
+                                Log.d("clinic_info::", id);
+                                if(id.equals("\"nouser\"")){
+                                    Toast.makeText(getBaseContext(),"You are not registered, Please signup",Toast.LENGTH_LONG).show();
+                                }else if (id.equals("\"wrongpassword\"")){
+                                    Toast.makeText(getBaseContext(),"Please input correct password",Toast.LENGTH_LONG).show();
+                                }else{
+                                    JsonObject clinic_object = result.getAsJsonObject("userid");
+                                    String userid = clinic_object.get("id").getAsString();
+                                    Common.getInstance().setUserID(userid);
+
+//                                    Common.getInstance().setLogin_status("yes");
+//                                    Common.getInstance().setClinictype(type);
+//                                    loginStatus = "yes" + " " + clinic_id + " " + type;
+//                                    writeFile();
                                     Intent intent = new Intent(LoginActivity.this, DiscloserActivity.class);
                                     startActivity(intent);
                                     finish();
-                                }else if (status.equals("existemail")) {
-                                    Toast.makeText(getBaseContext(),"Your email already exist, Please check again", Toast.LENGTH_LONG).show();
-                                }else if (status.equals("existuser")) {
-                                    Toast.makeText(getBaseContext(),"Username already exist, Please check again", Toast.LENGTH_LONG).show();
-                                } else if (status.equals("fail")) {
-                                    Toast.makeText(getBaseContext(),"Fail signup", Toast.LENGTH_LONG).show();
                                 }
                             } else {
-
+                                Toast.makeText(getBaseContext(),"Sigin Fail!",Toast.LENGTH_LONG).show();
                             }
                         }
                     });

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -14,10 +15,12 @@ import com.mobiledevteam.calculator.cell.ExpandCategoryAdapter;
 import com.mobiledevteam.calculator.cell.ExpandRepeatAdapter;
 
 public class SetIncomeActivity extends AppCompatActivity {
-    ExpandableListView _expandCategory;
-    ExpandableListView _expandRepeat;
-    ExpandCategoryAdapter exCateAdapter;
-    ExpandRepeatAdapter exRepeatAdapter;
+    private ExpandableListView _expandCategory;
+    private ExpandableListView _expandRepeat;
+    private ExpandCategoryAdapter exCateAdapter;
+    private ExpandRepeatAdapter exRepeatAdapter;
+    private int categoryID=100;
+    private int repeatID=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,6 @@ public class SetIncomeActivity extends AppCompatActivity {
         exCateAdapter = new ExpandCategoryAdapter(this, Common.getInstance().getmIncomeCategory());
         exRepeatAdapter = new ExpandRepeatAdapter(this, Common.getInstance().getmRepeatCategory());
         setReady();
-
     }
     private void setReady(){
         _expandCategory.setDivider(null);
@@ -49,6 +51,14 @@ public class SetIncomeActivity extends AppCompatActivity {
                 _expandCategory.setLayoutParams(params);
             }
         });
+        _expandCategory.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                categoryID = childPosition;
+                Log.d("CategoryID::", String.valueOf(categoryID));
+                return true;
+            }
+        });
 
         _expandRepeat.setDivider(null);
         _expandRepeat.setAdapter(exRepeatAdapter);
@@ -66,6 +76,14 @@ public class SetIncomeActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams params = _expandRepeat.getLayoutParams();
                 params.height = params.height / 7;
                 _expandRepeat.setLayoutParams(params);
+            }
+        });
+        _expandRepeat.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                repeatID = childPosition;
+                Log.d("repeatID::", String.valueOf(repeatID));
+                return true;
             }
         });
     }

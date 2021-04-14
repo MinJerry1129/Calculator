@@ -3,9 +3,9 @@ package com.mobiledevteam.calculator.cell;
 public class Category {
     private String mId;
     private String mTitle;
-    private String mImageUrl;
+    private int mImageUrl;
 
-    public Category(String id,String title,String imageUrl){
+    public Category(String id,String title,int imageUrl){
         mId=id;
         mTitle=title;
         mImageUrl = imageUrl;
@@ -15,6 +15,6 @@ public class Category {
         return mId;
     }
     public String getmTitle() {return mTitle;}
-    public String getmImageUrl() { return mImageUrl; }
+    public int getmImageUrl() { return mImageUrl; }
 }
 

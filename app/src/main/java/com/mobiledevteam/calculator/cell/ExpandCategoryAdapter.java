@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobiledevteam.calculator.R;
@@ -37,7 +38,7 @@ public class ExpandCategoryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.mCategory.get(childPosition).getmTitle();
+        return this.mCategory.get(childPosition);
     }
 
     @Override
@@ -68,13 +69,15 @@ public class ExpandCategoryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        String child = (String) getChild(groupPosition, childPosition);
+        Category child = (Category) getChild(groupPosition, childPosition);
         if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
+            convertView = layoutInflater.inflate(R.layout.list_category_item, null);
         }
-        TextView groupName = convertView.findViewById(R.id.list_parent);
-        groupName.setText(child);
+        TextView groupName = convertView.findViewById(R.id.list_item);
+        groupName.setText(child.getmTitle());
+        ImageView groupImg = convertView.findViewById(R.id.img_category);
+        groupImg.setImageResource(child.getmImageUrl());
         return convertView;
     }
 

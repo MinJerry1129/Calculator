@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/list_item"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/major"
+        android:gravity="center|start"
+        android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:padding="@dimen/_5sdp"/>
+</LinearLayout>
