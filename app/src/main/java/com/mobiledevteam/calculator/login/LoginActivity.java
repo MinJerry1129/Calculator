@@ -53,18 +53,18 @@ public class LoginActivity extends AppCompatActivity {
         mIncomeCategory.add(new Category("3","Royalty",R.drawable.royalty));
         mIncomeCategory.add(new Category("4","Other",R.drawable.other));
 
-//        mLiabilityCategory.add(new Category("0","Condo Fee","condo"));
-//        mLiabilityCategory.add(new Category("1","Property Taxes","property"));
-//        mLiabilityCategory.add(new Category("2","Mortgage Payment","mortgage"));
-//        mLiabilityCategory.add(new Category("3","Cell Phone","phone"));
-//        mLiabilityCategory.add(new Category("4","Car Gas","gas"));
-//        mLiabilityCategory.add(new Category("5","Car Insurance","insurance"));
-//        mLiabilityCategory.add(new Category("6","Electric Bill","electric"));
-//        mLiabilityCategory.add(new Category("7","Groceries","groceries"));
-//        mLiabilityCategory.add(new Category("8","Gas/Heating","heating"));
-//        mLiabilityCategory.add(new Category("9","Tv/Internet","tv"));
-//        mLiabilityCategory.add(new Category("10","Water","water"));
-//        mLiabilityCategory.add(new Category("11","Secured Line of Credit","secured"));
+        mLiabilityCategory.add(new Category("0","Condo Fee",R.drawable.condo));
+        mLiabilityCategory.add(new Category("1","Property Taxes",R.drawable.business));
+        mLiabilityCategory.add(new Category("2","Mortgage Payment",R.drawable.mortgage));
+        mLiabilityCategory.add(new Category("3","Cell Phone",R.drawable.phone));
+        mLiabilityCategory.add(new Category("4","Car Gas",R.drawable.gas));
+        mLiabilityCategory.add(new Category("5","Car Insurance",R.drawable.car));
+        mLiabilityCategory.add(new Category("6","Electric Bill",R.drawable.electric));
+        mLiabilityCategory.add(new Category("7","Groceries",R.drawable.grocery));
+        mLiabilityCategory.add(new Category("8","Gas/Heating",R.drawable.heat));
+        mLiabilityCategory.add(new Category("9","Tv/Internet",R.drawable.tv));
+        mLiabilityCategory.add(new Category("10","Water",R.drawable.water));
+        mLiabilityCategory.add(new Category("11","Secured Line of Credit",R.drawable.credit));
 
         mRepeatCategort.add("Once");
         mRepeatCategort.add("Every Day");
