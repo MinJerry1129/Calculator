@@ -5,20 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -29,9 +34,15 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.mobiledevteam.calculator.R;
 import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
+import com.mobiledevteam.calculator.cell.PayInfo;
 import com.mobiledevteam.calculator.login.DiscloserActivity;
 import com.mobiledevteam.calculator.login.LoginActivity;
 import com.mobiledevteam.calculator.profile.UserHomeActivity;
@@ -44,6 +55,14 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView _dateList;
     private Button _setIncome;
     private Button _setLiability;
+    private TextView _txtIncome;
+    private TextView _txtLiability;
+    private TextView _txtRemaining;
+    private int mIncomeprice = 0;
+    private int mLiabilityprice = 0;
+    private int mRemainingPrice = 0;
+    ArrayList<PayInfo> mAllIncomeInfo = new ArrayList<>();
+    ArrayList<PayInfo> mAllLiabilityInfo = new ArrayList<>();
     private String[] parties = new String[] {
             "Remaining", "Liabilities"
     };
@@ -63,6 +82,9 @@ public class HomeActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         _setIncome = (Button)findViewById(R.id.btn_income);
         _setLiability = (Button)findViewById(R.id.btn_liabilities);
+        _txtIncome = (TextView)findViewById(R.id.txt_income);
+        _txtLiability = (TextView)findViewById(R.id.txt_liability);
+        _txtRemaining = (TextView)findViewById(R.id.txt_remaining);
         userid = Common.getInstance().getUserID();
 
         _dateList.setOnClickListener(new View.OnClickListener() {
@@ -72,11 +94,78 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         setReady();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         getData();
     }
 
     private void getData() {
-        
+
+        final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Bright_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Get Data...");
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // TODO: Implement your own signup logic here.
+        JsonObject json = new JsonObject();
+        json.addProperty("id",userid);
+        json.addProperty("type",sel_type);
+
+        try {
+            Ion.with(this)
+                    .load(Common.getInstance().getBaseURL()+"api/gethomedata")
+                    .setJsonObjectBody(json)
+                    .asJsonObject()
+                    .setCallback(new FutureCallback<JsonObject>() {
+                        @Override
+                        public void onCompleted(Exception e, JsonObject result) {
+                            progressDialog.dismiss();
+                            Log.d("result::", result.toString());
+                            mAllIncomeInfo = new ArrayList<>();
+                            mAllLiabilityInfo = new ArrayList<>();
+                            mIncomeprice = 0;
+                            mLiabilityprice = 0;
+
+                            if (result != null) {
+                                JsonArray payinfo_array = result.get("payinfo").getAsJsonArray();
+                                for(JsonElement payinfoElement : payinfo_array){
+                                    JsonObject thepayinfo = payinfoElement.getAsJsonObject();
+
+                                    String id = thepayinfo.get("id").getAsString();
+                                    int categoryid = thepayinfo.get("categoryid").getAsInt();
+                                    String price = thepayinfo.get("price").getAsString();
+                                    String paytype = thepayinfo.get("paytype").getAsString();
+                                    if (paytype.equals("income")){
+                                        mIncomeprice = Integer.parseInt(price) + mIncomeprice;
+                                        mAllIncomeInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                    }else{
+                                        mLiabilityprice = Integer.parseInt(price) + mLiabilityprice;
+                                        mAllLiabilityInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                    }
+//                                    mAllClinicList.add(new HomeClinic(id,name,firstname + " " +secondname ,image,description,phone,whatsapp,doctor,clinic_location));
+                                }
+                            } else {
+                                Toast.makeText(getBaseContext(),"No info", Toast.LENGTH_LONG).show();
+                            }
+                            _txtIncome.setText("  " + String.valueOf(mIncomeprice) + " $");
+                            _txtLiability.setText(String.valueOf(mLiabilityprice) + " $");
+                            mRemainingPrice = mIncomeprice - mLiabilityprice;
+                            _txtRemaining.setText(String.valueOf(mRemainingPrice) + " $");
+                            if(mRemainingPrice < 0){
+                                mRemainingPrice = 0;
+                            }
+                            setPieData();
+                        }
+                    });
+        }catch(Exception e){
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void setReady(){
@@ -95,6 +184,9 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    private void setPieData(){
         _pieMoney.setDragDecelerationFrictionCoef(0.95f);
         _pieMoney.getDescription().setEnabled(false);
         _pieMoney.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
@@ -139,6 +231,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String strName = arrayAdapter.getItem(which);
                 sel_type = which;
+                getData();
             }
         });
         builderSingle.show();
@@ -148,8 +241,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        entries.add(new PieEntry(62, parties[0]));
-        entries.add(new PieEntry(38, parties[1]));
+        entries.add(new PieEntry(mRemainingPrice, parties[0]));
+        entries.add(new PieEntry(mLiabilityprice, parties[1]));
 
         PieDataSet dataSet = new PieDataSet(entries, "Election Results");
         dataSet.setSliceSpace(3f);
