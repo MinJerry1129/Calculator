@@ -1,13 +1,19 @@
 package com.mobiledevteam.calculator.setting;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
@@ -19,6 +25,7 @@ public class SettingHomeActivity extends AppCompatActivity {
     private Button _btnUsername;
     private Button _btnPassword;
     private Button _btnDiscloser;
+    private Button _btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,7 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnUsername = (Button)findViewById(R.id.btn_username);
         _btnPassword = (Button)findViewById(R.id.btn_pass);
         _btnDiscloser = (Button)findViewById(R.id.btn_discloser);
+        _btnDiscloser = (Button)findViewById(R.id.btn_logout);
         setReady();
     }
 
@@ -37,13 +45,55 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingHomeActivity.this);
+                builder.setTitle("Change Username");
 
+                final EditText input = new EditText(SettingHomeActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+               builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       Toast.makeText(getBaseContext(),input.getText().toString(),Toast.LENGTH_LONG).show();
+                       input.getText().toString();
+                   }
+               });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
         _btnPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingHomeActivity.this);
+                builder.setTitle("Change Password");
 
+                final EditText input_password = new EditText(SettingHomeActivity.this);
+                input_password.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input_password);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getBaseContext(),input_password.getText().toString(),Toast.LENGTH_LONG).show();
+//                        input_cpassword.getText().toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
         _btnDiscloser.setOnClickListener(new View.OnClickListener() {
