@@ -19,9 +19,11 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,7 @@ import com.koushikdutta.ion.Ion;
 import com.mobiledevteam.calculator.R;
 import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
+import com.mobiledevteam.calculator.cell.IncomeListAdapter;
 import com.mobiledevteam.calculator.cell.PayInfo;
 import com.mobiledevteam.calculator.login.DiscloserActivity;
 import com.mobiledevteam.calculator.login.LoginActivity;
@@ -49,6 +52,7 @@ import com.mobiledevteam.calculator.profile.UserHomeActivity;
 import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private PieChart _pieMoney;
@@ -58,6 +62,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView _txtIncome;
     private TextView _txtLiability;
     private TextView _txtRemaining;
+    private ListView _listIncome;
+    private ListView _listLiability;
     private int mIncomeprice = 0;
     private int mLiabilityprice = 0;
     private int mRemainingPrice = 0;
@@ -85,6 +91,8 @@ public class HomeActivity extends AppCompatActivity {
         _txtIncome = (TextView)findViewById(R.id.txt_income);
         _txtLiability = (TextView)findViewById(R.id.txt_liability);
         _txtRemaining = (TextView)findViewById(R.id.txt_remaining);
+        _listIncome = (ListView) findViewById(R.id.list_income);
+        _listLiability = (ListView) findViewById(R.id.list_liability);
         userid = Common.getInstance().getUserID();
 
         _dateList.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +168,7 @@ public class HomeActivity extends AppCompatActivity {
                             if(mRemainingPrice < 0){
                                 mRemainingPrice = 0;
                             }
+                            setListData();
                             setPieData();
                         }
                     });
@@ -185,6 +194,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void setListData(){
+        IncomeListAdapter adapter=new IncomeListAdapter(this, mAllIncomeInfo);
+        _listIncome.setAdapter(adapter);
+        ViewGroup.LayoutParams params = _listIncome.getLayoutParams();
+        params.height = params.height * mAllIncomeInfo.size();
+        _listIncome.setLayoutParams(params);
     }
     private void setPieData(){
         _pieMoney.setDragDecelerationFrictionCoef(0.95f);
@@ -217,7 +233,7 @@ public class HomeActivity extends AppCompatActivity {
         arrayAdapter.add("Monthly");
         arrayAdapter.add("Semi Annually");
         arrayAdapter.add("Anually");
-        arrayAdapter.add("Custom");
+//        arrayAdapter.add("Custom");
 
         builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener(){
             @Override

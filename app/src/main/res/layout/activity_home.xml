@@ -117,8 +117,9 @@
                         android:text="Income"
                         android:textColor="@color/major"/>
                     <ListView
+                        android:id="@+id/list_income"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="@dimen/_30sdp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/layout_liability"
@@ -131,8 +132,10 @@
                         android:text="Liability"
                         android:textColor="@color/second"/>
                     <ListView
+                        android:id="@+id/list_liability"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
