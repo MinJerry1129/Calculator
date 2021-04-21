@@ -33,9 +33,45 @@
                         app:selectionColor="@color/second"
                         app:todayLabelColor="@color/second"
                         app:headerColor="@color/second"
-                        app:type="range_picker"
-                        app:maximumDaysRange="30"/>
+                        app:type="one_day_picker"/>
                 </androidx.constraintlayout.widget.ConstraintLayout >
+                <LinearLayout
+                    android:id="@+id/layout_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Income"
+                        android:textColor="@color/major"/>
+                    <ListView
+                        android:id="@+id/list_income"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"/>
+                    <ListView
+                        android:id="@+id/list_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layout_liability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Liability"
+                        android:textColor="@color/second"/>
+                    <ListView
+                        android:id="@+id/list_liability"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
