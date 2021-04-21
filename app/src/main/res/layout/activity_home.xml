@@ -9,8 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/_20sdp">
+        android:layout_weight="1">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -21,7 +20,8 @@
                 android:gravity="center">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -119,7 +119,12 @@
                     <ListView
                         android:id="@+id/list_income"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"/>
+                        android:layout_height="30dp"/>
+                    <ListView
+                        android:id="@+id/list_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:visibility="gone"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/layout_liability"
@@ -135,13 +140,13 @@
                     <ListView
                         android:id="@+id/list_liability"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        />
+                        android:layout_height="30dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:gravity="center">
                     <ImageView
                         android:layout_width="@dimen/_30sdp"

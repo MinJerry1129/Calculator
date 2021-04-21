@@ -65,6 +65,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView _txtRemaining;
     private ListView _listIncome;
     private ListView _listLiability;
+    private ListView _listStatus;
+    ViewGroup.LayoutParams params;
     private int mIncomeprice = 0;
     private int mLiabilityprice = 0;
     private int mRemainingPrice = 0;
@@ -93,8 +95,10 @@ public class HomeActivity extends AppCompatActivity {
         _txtLiability = (TextView)findViewById(R.id.txt_liability);
         _txtRemaining = (TextView)findViewById(R.id.txt_remaining);
         _listIncome = (ListView) findViewById(R.id.list_income);
+        _listStatus = (ListView) findViewById(R.id.list_status);
         _listLiability = (ListView) findViewById(R.id.list_liability);
         userid = Common.getInstance().getUserID();
+        params = _listStatus.getLayoutParams();
 
         _dateList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +107,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         setReady();
-
     }
 
     @Override
@@ -199,14 +202,14 @@ public class HomeActivity extends AppCompatActivity {
     private void setListData(){
         IncomeListAdapter adapter=new IncomeListAdapter(this, mAllIncomeInfo);
         _listIncome.setAdapter(adapter);
-        ViewGroup.LayoutParams params = _listIncome.getLayoutParams();
-        params.height = params.height * mAllIncomeInfo.size();
-        _listIncome.setLayoutParams(params);
+        ViewGroup.LayoutParams params_income = _listIncome.getLayoutParams();
+        params_income.height = params.height * mAllIncomeInfo.size();
+        _listIncome.setLayoutParams(params_income);
 
         LiabilityListAdapter adapter_liability=new LiabilityListAdapter(this, mAllLiabilityInfo);
         _listLiability.setAdapter(adapter_liability);
         ViewGroup.LayoutParams params_liability = _listLiability.getLayoutParams();
-        params_liability.height = params_liability.height * mAllLiabilityInfo.size();
+        params_liability.height = params.height * mAllLiabilityInfo.size();
         _listLiability.setLayoutParams(params_liability);
     }
     private void setPieData(){
@@ -264,6 +267,9 @@ public class HomeActivity extends AppCompatActivity {
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
+        if(mIncomeprice == 0 && mLiabilityprice == 0){
+            mRemainingPrice = 1;
+        }
         entries.add(new PieEntry(mRemainingPrice, parties[0]));
         entries.add(new PieEntry(mLiabilityprice, parties[1]));
 
