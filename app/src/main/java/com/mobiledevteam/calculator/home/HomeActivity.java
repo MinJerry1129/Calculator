@@ -45,6 +45,7 @@ import com.mobiledevteam.calculator.R;
 import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
 import com.mobiledevteam.calculator.cell.IncomeListAdapter;
+import com.mobiledevteam.calculator.cell.LiabilityListAdapter;
 import com.mobiledevteam.calculator.cell.PayInfo;
 import com.mobiledevteam.calculator.login.DiscloserActivity;
 import com.mobiledevteam.calculator.login.LoginActivity;
@@ -201,6 +202,12 @@ public class HomeActivity extends AppCompatActivity {
         ViewGroup.LayoutParams params = _listIncome.getLayoutParams();
         params.height = params.height * mAllIncomeInfo.size();
         _listIncome.setLayoutParams(params);
+
+        LiabilityListAdapter adapter_liability=new LiabilityListAdapter(this, mAllLiabilityInfo);
+        _listLiability.setAdapter(adapter_liability);
+        ViewGroup.LayoutParams params_liability = _listLiability.getLayoutParams();
+        params_liability.height = params_liability.height * mAllLiabilityInfo.size();
+        _listLiability.setLayoutParams(params_liability);
     }
     private void setPieData(){
         _pieMoney.setDragDecelerationFrictionCoef(0.95f);

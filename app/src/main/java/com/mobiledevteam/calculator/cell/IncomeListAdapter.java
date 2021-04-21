@@ -45,8 +45,7 @@ public class IncomeListAdapter extends ArrayAdapter<PayInfo> {
 
         titleText.setText(mCategory.get(onePayinfo.getmCategoryID()).getmTitle());
         imageView.setImageResource(mCategory.get(onePayinfo.getmCategoryID()).getmImageUrl());
-        priceText.setText(onePayinfo.getmPrice());
-
+        priceText.setText("+$ " + onePayinfo.getmPrice());
         return listItem;
     }
 }
