@@ -74,7 +74,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         try {
             Ion.with(this)
-                    .load(Common.getInstance().getBaseURL()+"api/updatepassword")
+                    .load(Common.getInstance().getBaseURL()+"api/updatePassword")
                     .setJsonObjectBody(json)
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
@@ -83,9 +83,16 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             Log.d("result::", result.toString());
                             if (result != null) {
-
+                                String result_update = result.get("status").getAsString();
+                                if (result_update.equals("wrongpassword")){
+                                    _txtOldPassword.setError("Check Original password");
+                                }else if (result_update.equals("ok")){
+                                    Toast.makeText(getBaseContext(), "Update Success.", Toast.LENGTH_LONG).show();
+                                }else{
+                                    Toast.makeText(getBaseContext(), "Update Fail.", Toast.LENGTH_LONG).show();
+                                }
                             } else {
-                                Toast.makeText(getBaseContext(),"Sigin Fail!",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getBaseContext(),"Update password Fail!",Toast.LENGTH_LONG).show();
                             }
                         }
                     });
