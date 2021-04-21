@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
@@ -14,6 +16,9 @@ import com.mobiledevteam.calculator.home.HomeActivity;
 import com.mobiledevteam.calculator.profile.UserHomeActivity;
 
 public class SettingHomeActivity extends AppCompatActivity {
+    private Button _btnUsername;
+    private Button _btnPassword;
+    private Button _btnDiscloser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,33 @@ public class SettingHomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_setting);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        _btnUsername = (Button)findViewById(R.id.btn_username);
+        _btnPassword = (Button)findViewById(R.id.btn_pass);
+        _btnDiscloser = (Button)findViewById(R.id.btn_discloser);
+        setReady();
     }
+
+    private void setReady() {
+        _btnUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        _btnPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        _btnDiscloser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
