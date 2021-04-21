@@ -33,6 +33,7 @@ public class SettingHomeActivity extends AppCompatActivity {
     private Button _btnDiscloser;
     private Button _btnLogout;
     private String loginStatus = "no 1";
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnPassword = (Button)findViewById(R.id.btn_pass);
         _btnDiscloser = (Button)findViewById(R.id.btn_discloser);
         _btnLogout = (Button)findViewById(R.id.btn_logout);
+        userId = Common.getInstance().getUserID();
         setReady();
     }
 
@@ -80,35 +82,15 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(SettingHomeActivity.this);
-                builder.setTitle("Change Password");
 
-                final EditText input_password = new EditText(SettingHomeActivity.this);
-                input_password.setInputType(InputType.TYPE_CLASS_TEXT);
-                input_password.setHint("Input password");
-                builder.setView(input_password);
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getBaseContext(),input_password.getText().toString(),Toast.LENGTH_LONG).show();
-//                        input_cpassword.getText().toString();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
             }
         });
         _btnDiscloser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(getBaseContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         _btnLogout.setOnClickListener(new View.OnClickListener() {
