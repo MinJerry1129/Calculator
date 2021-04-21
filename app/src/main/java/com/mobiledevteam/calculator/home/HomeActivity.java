@@ -152,13 +152,14 @@ public class HomeActivity extends AppCompatActivity {
                                     String id = thepayinfo.get("id").getAsString();
                                     int categoryid = thepayinfo.get("categoryid").getAsInt();
                                     String price = thepayinfo.get("price").getAsString();
+                                    String date_string = thepayinfo.get("date").getAsString();
                                     String paytype = thepayinfo.get("paytype").getAsString();
                                     if (paytype.equals("income")){
                                         mIncomeprice = Integer.parseInt(price) + mIncomeprice;
-                                        mAllIncomeInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                        mAllIncomeInfo.add(new PayInfo(id,categoryid,price,date_string,paytype));
                                     }else{
                                         mLiabilityprice = Integer.parseInt(price) + mLiabilityprice;
-                                        mAllLiabilityInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                        mAllLiabilityInfo.add(new PayInfo(id,categoryid,price,date_string,paytype));
                                     }
 //                                    mAllClinicList.add(new HomeClinic(id,name,firstname + " " +secondname ,image,description,phone,whatsapp,doctor,clinic_location));
                                 }

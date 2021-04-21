@@ -22,6 +22,9 @@ import com.mobiledevteam.calculator.R;
 import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.cell.Category;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,10 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView _txtsignup;
     private EditText _email;
     private EditText _password;
-
-    private ArrayList<Category> mIncomeCategory = new ArrayList<>();
-    private ArrayList<Category> mLiabilityCategory = new ArrayList<>();
-    private ArrayList<String> mRepeatCategort = new ArrayList<>();
+    private String loginStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,35 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         setReady();
     }
     private void setReady(){
-        mIncomeCategory.add(new Category("0","Salary",R.drawable.salary));
-        mIncomeCategory.add(new Category("1","Business Profit",R.drawable.business));
-        mIncomeCategory.add(new Category("2","Project",R.drawable.project));
-        mIncomeCategory.add(new Category("3","Royalty",R.drawable.royalty));
-        mIncomeCategory.add(new Category("4","Other",R.drawable.other));
 
-        mLiabilityCategory.add(new Category("0","Condo Fee",R.drawable.condo));
-        mLiabilityCategory.add(new Category("1","Property Taxes",R.drawable.business));
-        mLiabilityCategory.add(new Category("2","Mortgage Payment",R.drawable.mortgage));
-        mLiabilityCategory.add(new Category("3","Cell Phone",R.drawable.phone));
-        mLiabilityCategory.add(new Category("4","Car Gas",R.drawable.gas));
-        mLiabilityCategory.add(new Category("5","Car Insurance",R.drawable.car));
-        mLiabilityCategory.add(new Category("6","Electric Bill",R.drawable.electric));
-        mLiabilityCategory.add(new Category("7","Groceries",R.drawable.grocery));
-        mLiabilityCategory.add(new Category("8","Gas/Heating",R.drawable.heat));
-        mLiabilityCategory.add(new Category("9","Tv/Internet",R.drawable.tv));
-        mLiabilityCategory.add(new Category("10","Water",R.drawable.water));
-        mLiabilityCategory.add(new Category("11","Secured Line of Credit",R.drawable.credit));
-
-        mRepeatCategort.add("Once");
-        mRepeatCategort.add("Every Day");
-        mRepeatCategort.add("Every Week");
-        mRepeatCategort.add("Every Month");
-        mRepeatCategort.add("Semi Anually");
-        mRepeatCategort.add("Anually");
-
-        Common.getInstance().setmIncomeCategory(mIncomeCategory);
-        Common.getInstance().setmLiabilityCategory(mLiabilityCategory);
-        Common.getInstance().setmRepeatCategory(mRepeatCategort);
         
         _btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,15 +102,13 @@ public class LoginActivity extends AppCompatActivity {
                                 }else{
                                     JsonObject clinic_object = result.getAsJsonObject("userid");
                                     String userid = clinic_object.get("id").getAsString();
-                                    Common.getInstance().setUserID(userid);
 
-//                                    Common.getInstance().setLogin_status("yes");
-//                                    Common.getInstance().setClinictype(type);
-//                                    loginStatus = "yes" + " " + clinic_id + " " + type;
-//                                    writeFile();
-                                    Intent intent = new Intent(LoginActivity.this, DiscloserActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    Common.getInstance().setUserID(userid);
+                                    Common.getInstance().setLogin_status("yes");
+
+                                    loginStatus = "yes" + " " + userid;
+                                    writeFile();
+
                                 }
                             } else {
                                 Toast.makeText(getBaseContext(),"Sigin Fail!",Toast.LENGTH_LONG).show();
@@ -148,8 +118,19 @@ public class LoginActivity extends AppCompatActivity {
         }catch(Exception e){
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-
+    }
+    private  void writeFile(){
+        try {
+            FileOutputStream fileOutputStream = openFileOutput("loginstatus.pdm", MODE_PRIVATE);
+            fileOutputStream.write(loginStatus.getBytes());
+            fileOutputStream.close();
+            Intent intent = new Intent(LoginActivity.this, DiscloserActivity.class);
+            startActivity(intent);
+            finish();
+        }catch (FileNotFoundException e){
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean validate() {

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator">
-        <activity android:name=".login.SignupActivity"></activity>
+        <activity android:name=".setting.ChangePasswordActivity"></activity>
+        <activity android:name=".login.SignupActivity" />
         <activity android:name=".home.SetLiabilityActivity" />
         <activity android:name=".home.SetIncomeActivity" />
         <activity

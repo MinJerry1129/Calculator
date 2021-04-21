@@ -13,6 +13,7 @@ public class Common {
     private ArrayList<String> mRepeatCategory;
 
     private String userID;
+    private String login_status="no";
 
 
     public static Common getInstance() {
@@ -31,4 +32,7 @@ public class Common {
 
     public String getUserID() {return userID;}
     public void setUserID(String userID) {this.userID = userID;}
+
+    public String getLogin_status() {return login_status;}
+    public void setLogin_status(String login_status) {this.login_status = login_status;}
 }

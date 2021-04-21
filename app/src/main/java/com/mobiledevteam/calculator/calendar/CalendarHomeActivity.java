@@ -105,11 +105,12 @@ public class CalendarHomeActivity extends AppCompatActivity {
                                     String id = thepayinfo.get("id").getAsString();
                                     int categoryid = thepayinfo.get("categoryid").getAsInt();
                                     String price = thepayinfo.get("price").getAsString();
+                                    String date_string = thepayinfo.get("date").getAsString();
                                     String paytype = thepayinfo.get("paytype").getAsString();
                                     if (paytype.equals("income")){
-                                        mAllIncomeInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                        mAllIncomeInfo.add(new PayInfo(id,categoryid,price,date_string,paytype));
                                     }else{
-                                        mAllLiabilityInfo.add(new PayInfo(id,categoryid,price,paytype));
+                                        mAllLiabilityInfo.add(new PayInfo(id,categoryid,price,date_string,paytype));
                                     }
                                 }
                             } else {

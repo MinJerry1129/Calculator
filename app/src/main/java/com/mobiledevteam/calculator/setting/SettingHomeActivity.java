@@ -17,15 +17,22 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
+import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.calendar.CalendarHomeActivity;
 import com.mobiledevteam.calculator.home.HomeActivity;
+import com.mobiledevteam.calculator.login.LoginActivity;
 import com.mobiledevteam.calculator.profile.UserHomeActivity;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class SettingHomeActivity extends AppCompatActivity {
     private Button _btnUsername;
     private Button _btnPassword;
     private Button _btnDiscloser;
     private Button _btnLogout;
+    private String loginStatus = "no 1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnUsername = (Button)findViewById(R.id.btn_username);
         _btnPassword = (Button)findViewById(R.id.btn_pass);
         _btnDiscloser = (Button)findViewById(R.id.btn_discloser);
-        _btnDiscloser = (Button)findViewById(R.id.btn_logout);
+        _btnLogout = (Button)findViewById(R.id.btn_logout);
         setReady();
     }
 
@@ -50,6 +57,7 @@ public class SettingHomeActivity extends AppCompatActivity {
 
                 final EditText input = new EditText(SettingHomeActivity.this);
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setHint("Input username");
                 builder.setView(input);
 
                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -77,6 +85,7 @@ public class SettingHomeActivity extends AppCompatActivity {
 
                 final EditText input_password = new EditText(SettingHomeActivity.this);
                 input_password.setInputType(InputType.TYPE_CLASS_TEXT);
+                input_password.setHint("Input password");
                 builder.setView(input_password);
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -102,6 +111,27 @@ public class SettingHomeActivity extends AppCompatActivity {
 
             }
         });
+        _btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Common.getInstance().setLogin_status("no");
+                writeloginFile();
+            }
+        });
+    }
+    private  void writeloginFile(){
+        try {
+            FileOutputStream fileOutputStream = openFileOutput("loginstatus.pdm", MODE_PRIVATE);
+            fileOutputStream.write(loginStatus.getBytes());
+            fileOutputStream.close();
+
+            Intent intent=new Intent(getBaseContext(), LoginActivity.class);//LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }catch (FileNotFoundException e){
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
