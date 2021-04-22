@@ -79,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
         JsonObject json = new JsonObject();
-        json.addProperty("username", _email.getText().toString());
-        json.addProperty("password", _password.getText().toString());
+        json.addProperty("username", username);
+        json.addProperty("password", password);
 
         try {
             Ion.with(this)
