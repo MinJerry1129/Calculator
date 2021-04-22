@@ -65,8 +65,7 @@ public class SettingHomeActivity extends AppCompatActivity {
                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
-                       Toast.makeText(getBaseContext(),input.getText().toString(),Toast.LENGTH_LONG).show();
-                       input.getText().toString();
+                       updateUsername();
                    }
                });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -82,15 +81,15 @@ public class SettingHomeActivity extends AppCompatActivity {
         _btnPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(getBaseContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         _btnDiscloser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getBaseContext(), ChangePasswordActivity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
         _btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +100,11 @@ public class SettingHomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void updateUsername() {
+
+    }
+
     private  void writeloginFile(){
         try {
             FileOutputStream fileOutputStream = openFileOutput("loginstatus.pdm", MODE_PRIVATE);
