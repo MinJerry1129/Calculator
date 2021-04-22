@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Common {
     private static Common instance = new Common();
-//    private String baseURL = "http://phpstack-362651-1717329.cloudwaysapps.com/";
-    private String baseURL = "http://10.0.2.2/calculator/";
+    private String baseURL = "https://pressplayfinancial.ca/";
+//    private String baseURL = "http://10.0.2.2/calculator/";
     private ArrayList<Category> mIncomeCategory;
     private ArrayList<Category> mLiabilityCategory;
     private ArrayList<String> mRepeatCategory;
