@@ -16,7 +16,12 @@ import com.mobiledevteam.calculator.home.HomeActivity;
 import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
 public class UserHomeActivity extends AppCompatActivity {
+    private Button btn_saving;
+    private Button btn_invest;
     private Button btn_mort;
+    private Button btn_amount;
+    private Button btn_period;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +30,11 @@ public class UserHomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_user);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        btn_saving = (Button)findViewById(R.id.btn_saving);
+        btn_invest = (Button)findViewById(R.id.btn_invest);
         btn_mort = (Button)findViewById(R.id.btn_mort);
+        btn_amount = (Button)findViewById(R.id.btn_amount);
+        btn_period = (Button)findViewById(R.id.btn_period);
         setReady();
     }
 
