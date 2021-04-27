@@ -11,6 +11,7 @@ public class Common {
     private ArrayList<Category> mIncomeCategory;
     private ArrayList<Category> mLiabilityCategory;
     private ArrayList<String> mRepeatCategory;
+    private ArrayList<String> mInvestmentCategory;
 
     private String userID;
     private String login_status="no";
@@ -29,6 +30,9 @@ public class Common {
 
     public ArrayList<String> getmRepeatCategory() { return mRepeatCategory;}
     public void setmRepeatCategory(ArrayList<String> mRepeatCategory) { this.mRepeatCategory = mRepeatCategory;}
+
+    public ArrayList<String> getmInvestmentCategory() { return mInvestmentCategory;}
+    public void setmInvestmentCategory(ArrayList<String> mInvestmentCategory) {this.mInvestmentCategory = mInvestmentCategory;}
 
     public String getUserID() {return userID;}
     public void setUserID(String userID) {this.userID = userID;}

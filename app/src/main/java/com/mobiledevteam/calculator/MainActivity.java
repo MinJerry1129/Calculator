@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         Common.getInstance().setmIncomeCategory(mIncomeCategory);
         Common.getInstance().setmLiabilityCategory(mLiabilityCategory);
         Common.getInstance().setmRepeatCategory(mRepeatCategort);
+        Common.getInstance().setmInvestmentCategory(mInvestmentCategory);
     }
 
     private void readFile(){
