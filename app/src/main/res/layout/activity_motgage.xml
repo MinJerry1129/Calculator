@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mortgage amount"/>
-            <EditText android:id="@+id/input_mortage"
+            <EditText android:id="@+id/input_amount"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:inputType="number"
@@ -126,7 +126,7 @@
                 android:id="@+id/txt_totalcost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1000000"
+                android:text="127"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15sdp"/>
         </LinearLayout>
@@ -143,7 +143,7 @@
                 android:id="@+id/txt_monthlycost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1000000"
+                android:text="1"
                 android:textStyle="bold"
                 android:textSize="@dimen/_15sdp"/>
         </LinearLayout>

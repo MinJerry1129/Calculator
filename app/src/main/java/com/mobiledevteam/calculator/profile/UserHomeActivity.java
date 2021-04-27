@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobiledevteam.calculator.R;
@@ -14,6 +16,7 @@ import com.mobiledevteam.calculator.home.HomeActivity;
 import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
 public class UserHomeActivity extends AppCompatActivity {
+    private Button btn_mort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,20 @@ public class UserHomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_user);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        btn_mort = (Button)findViewById(R.id.btn_mort);
+        setReady();
     }
+
+    private void setReady() {
+        btn_mort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserHomeActivity.this, MotgageActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
