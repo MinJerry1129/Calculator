@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Category> mIncomeCategory = new ArrayList<>();
     private ArrayList<Category> mLiabilityCategory = new ArrayList<>();
     private ArrayList<String> mRepeatCategort = new ArrayList<>();
+
+    private ArrayList<String> mInvestmentCategory = new ArrayList<>();
     private String loginCheck = "no 1";
     private String login_status = "no";
 
@@ -69,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
         mRepeatCategort.add("Every Month");
         mRepeatCategort.add("Semi Anually");
         mRepeatCategort.add("Anually");
+
+        mInvestmentCategory.add("Stocks");
+        mInvestmentCategory.add("Bonds");
+        mInvestmentCategory.add("Investment Funds");
+        mInvestmentCategory.add("Bank Products");
+        mInvestmentCategory.add("Options");
+        mInvestmentCategory.add("Annulties");
+        mInvestmentCategory.add("Retirement");
+        mInvestmentCategory.add("Saving for Education");
+        mInvestmentCategory.add("Alternative and Complex Products");
+        mInvestmentCategory.add("Initial Coin Offerings and Cryptocurrencies");
+        mInvestmentCategory.add("Commodity Futures");
+        mInvestmentCategory.add("Security Futures");
+        mInvestmentCategory.add("Insurance");
 
         Common.getInstance().setmIncomeCategory(mIncomeCategory);
         Common.getInstance().setmLiabilityCategory(mLiabilityCategory);
