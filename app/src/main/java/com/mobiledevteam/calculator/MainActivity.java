@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Category> mIncomeCategory = new ArrayList<>();
     private ArrayList<Category> mLiabilityCategory = new ArrayList<>();
     private ArrayList<String> mRepeatCategort = new ArrayList<>();
-
     private ArrayList<String> mInvestmentCategory = new ArrayList<>();
+    private ArrayList<String> mPeroidCategory = new ArrayList<>();
     private String loginCheck = "no 1";
     private String login_status = "no";
 
@@ -86,10 +86,21 @@ public class MainActivity extends AppCompatActivity {
         mInvestmentCategory.add("Security Futures");
         mInvestmentCategory.add("Insurance");
 
+        mPeroidCategory.add("Week");
+        mPeroidCategory.add("Two weeks");
+        mPeroidCategory.add("Month");
+        mPeroidCategory.add("Two Month");
+        mPeroidCategory.add("Six Month");
+        mPeroidCategory.add("Year");
+        mPeroidCategory.add("Two Years");
+
+
+
         Common.getInstance().setmIncomeCategory(mIncomeCategory);
         Common.getInstance().setmLiabilityCategory(mLiabilityCategory);
         Common.getInstance().setmRepeatCategory(mRepeatCategort);
         Common.getInstance().setmInvestmentCategory(mInvestmentCategory);
+        Common.getInstance().setmPeroidCategory(mPeroidCategory);
     }
 
     private void readFile(){

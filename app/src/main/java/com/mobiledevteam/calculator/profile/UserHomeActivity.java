@@ -46,6 +46,13 @@ public class UserHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_amount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserHomeActivity.this, SetGoalActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
