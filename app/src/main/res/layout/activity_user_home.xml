@@ -161,8 +161,6 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
