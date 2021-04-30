@@ -23,7 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.SetGoalActivity"></activity>
+        <activity android:name=".profile.InvestmentListActivity"></activity>
+        <activity android:name=".profile.InvestmentActivity" />
+        <activity android:name=".profile.SetGoalActivity" />
         <activity android:name=".profile.MotgageActivity" />
         <activity android:name=".profile.AddSavingActivity" />
         <activity android:name=".setting.ChangePasswordActivity" />

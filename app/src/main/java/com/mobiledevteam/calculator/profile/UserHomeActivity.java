@@ -53,6 +53,13 @@ public class UserHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_invest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserHomeActivity.this, InvestmentListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
