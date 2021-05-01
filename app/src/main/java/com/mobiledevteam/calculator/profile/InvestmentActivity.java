@@ -93,7 +93,6 @@ public class InvestmentActivity extends AppCompatActivity {
         json.addProperty("value",price);
         json.addProperty("type",selectedId);
 
-
         try {
             Ion.with(this)
                     .load(Common.getInstance().getBaseURL()+"api/setinvestment")
