@@ -20,7 +20,7 @@ import java.util.List;
 public class LiabilityListAdapter extends ArrayAdapter<PayInfo> {
     private Context mContext;
     private List<PayInfo> allPayinfoList = new ArrayList<>();
-    private ArrayList<Category> mCategory= Common.getInstance().getmLiabilityCategory();;
+    private ArrayList<Category> mCategory= Common.getInstance().getmLiabilityCategory();
     public LiabilityListAdapter(@NonNull Context context, ArrayList<PayInfo> list) {
         super(context, 0, list);
         mContext = context;

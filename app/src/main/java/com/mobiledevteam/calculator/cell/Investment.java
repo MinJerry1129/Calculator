@@ -3,10 +3,10 @@ package com.mobiledevteam.calculator.cell;
 public class Investment {
     private String mId;
     private String mPrice;
-    private String mType;
+    private int mType;
     private String mDate;
 
-    public Investment(String id,String price,String type, String mdate){
+    public Investment(String id,String price,int type, String mdate){
         mId=id;
         mPrice=price;
         mType = type;
@@ -18,5 +18,5 @@ public class Investment {
     }
     public String getmPrice() { return mPrice; }
     public String getmDate() { return mDate;}
-    public String getmType() { return mType;}
+    public int getmType() { return mType;}
 }
