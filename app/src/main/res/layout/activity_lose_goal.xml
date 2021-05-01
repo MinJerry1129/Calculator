@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.LoseGoalActivity"
+    android:gravity="center"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/losefinger"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keep striving to meet \n your savings goals! \n We all have room to grow!"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:textSize="@dimen/_20sdp"/>
+
+</LinearLayout>

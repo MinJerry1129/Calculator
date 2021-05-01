@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.WinGoalActivity"
+    android:background="@drawable/congrate"
+    android:gravity="center"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/winfinger"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You are doing great on \n your savings goal! \n Keep up the hard work"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textAlignment="center"
+        android:textColor="@color/second"
+        android:textStyle="bold"
+        android:textSize="@dimen/_20sdp"/>
+</LinearLayout>
