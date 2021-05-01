@@ -107,10 +107,10 @@ public class InvestmentActivity extends AppCompatActivity {
                                 String status = result.get("status").getAsString();
                                 if (status.equals("ok")) {
                                     Log.d("log1::", "no");
-                                    Toast.makeText(getBaseContext(),"Set a goal Success!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(),"Set a Investment Success!", Toast.LENGTH_LONG).show();
 
                                 } else{
-                                    Toast.makeText(getBaseContext(),"Fail set a goal!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(),"Fail set a Investment!", Toast.LENGTH_LONG).show();
                                 }
                             } else {
                             }
