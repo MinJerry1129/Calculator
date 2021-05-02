@@ -42,4 +42,6 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0' //Chart
     implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'//calendar
+
+    implementation "com.github.VaibhavLakhera:Circular-Progress-View:0.1.2" //progress chart
 }

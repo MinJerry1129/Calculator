@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.LoseGoalActivity"></activity>
+        <activity android:name=".profile.SavingActivity"></activity>
+        <activity android:name=".profile.LoseGoalActivity" />
         <activity android:name=".profile.WinGoalActivity" />
         <activity android:name=".profile.SavingListActivity" />
         <activity android:name=".profile.InvestmentListActivity" />

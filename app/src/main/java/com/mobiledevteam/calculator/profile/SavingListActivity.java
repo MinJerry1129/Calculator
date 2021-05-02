@@ -3,10 +3,13 @@ package com.mobiledevteam.calculator.profile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -35,6 +38,13 @@ public class SavingListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_saving_list);
         _allGridView = (GridView)findViewById(R.id.grid_allsaving);
         userid = Common.getInstance().getUserID();
+        _allGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), SavingActivity.class).putExtra("saving_id", mAllSavingList.get(position).getmId());
+                startActivity(intent);
+            }
+        });
     }
     @Override
     protected void onStart() {
@@ -53,7 +63,7 @@ public class SavingListActivity extends AppCompatActivity {
         json.addProperty("id", userid);
         try {
             Ion.with(this)
-                    .load(Common.getInstance().getBaseURL()+"api/getSavingInfo")
+                    .load(Common.getInstance().getBaseURL()+"api/getSavingsInfo")
                     .setJsonObjectBody(json)
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
