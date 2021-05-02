@@ -2,11 +2,16 @@ package com.mobiledevteam.calculator.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +44,7 @@ public class SavingActivity extends AppCompatActivity {
 
     private String userid;
     private String savingid;
+    private int targetPrice;
     int daysTBetween = 0;
     int daysSBetween = 0;
     int totalincome = 0;
@@ -54,9 +60,91 @@ public class SavingActivity extends AppCompatActivity {
         _mSpentDay = (TextView)findViewById(R.id.txt_spentday);
         _mTarget = (TextView)findViewById(R.id.txt_target);
         _mSave = (TextView)findViewById(R.id.txt_save);
+        _mDelete = (ImageView)findViewById(R.id.img_delete);
+        _mCheck = (ImageView)findViewById(R.id.img_check);
         _mMonthProgress = (CircularProgressView) findViewById(R.id.progress_month);
         _mSaveProgress = (CircularProgressView) findViewById(R.id.progress_money);
+        setReady();
         getData();
+    }
+
+    private void setReady() {
+        _mCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCheck();
+            }
+        });
+        _mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(SavingActivity.this);
+                builder1.setMessage("Do you want delete?");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                onDeleteSave();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }
+                ).show ();
+            }
+        });
+    }
+    private void onCheck() {
+        if(daysSBetween>daysTBetween) {
+            if(remain<targetPrice){
+                Intent intent = new Intent(getApplicationContext(), LoseGoalActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(getApplicationContext(), WinGoalActivity.class);
+                startActivity(intent);
+            }
+            finish();
+        }else{
+            finish();
+        }
+    }
+    private void onDeleteSave() {
+        final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Bright_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Get Data...");
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        JsonObject json = new JsonObject();
+        json.addProperty("id", userid);
+        json.addProperty("savingid", savingid);
+        try {
+            Ion.with(this)
+                    .load(Common.getInstance().getBaseURL()+"api/deletesavinginfo")
+                    .setJsonObjectBody(json)
+                    .asJsonObject()
+                    .setCallback(new FutureCallback<JsonObject>() {
+                        @Override
+                        public void onCompleted(Exception e, JsonObject result) {
+                            progressDialog.dismiss();
+//                            mAllSavingList = new ArrayList<>();
+                            if (result != null) {
+                                finish();
+                            } else {
+
+                            }
+                        }
+                    });
+        }catch(Exception e){
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void getData() {
@@ -85,6 +173,7 @@ public class SavingActivity extends AppCompatActivity {
                                 String startdate = saving_object.get("startdate").getAsString();
                                 String enddate = saving_object.get("enddate").getAsString();
                                 String price = saving_object.get("price").getAsString();
+                                targetPrice = Integer.parseInt(price);
                                 _mTarget.setText(price);
                                 Date mstartdate;
                                 Date menddate;
