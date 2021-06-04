@@ -23,19 +23,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.SavingActivity"></activity>
-        <activity android:name=".profile.LoseGoalActivity" />
-        <activity android:name=".profile.WinGoalActivity" />
-        <activity android:name=".profile.SavingListActivity" />
-        <activity android:name=".profile.InvestmentListActivity" />
-        <activity android:name=".profile.InvestmentActivity" />
-        <activity android:name=".profile.SetGoalActivity" />
-        <activity android:name=".profile.MotgageActivity" />
-        <activity android:name=".profile.AddSavingActivity" />
-        <activity android:name=".setting.ChangePasswordActivity" />
-        <activity android:name=".login.SignupActivity" />
-        <activity android:name=".home.SetLiabilityActivity" />
-        <activity android:name=".home.SetIncomeActivity" />
+        <activity android:name=".profile.SavingActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".profile.LoseGoalActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.WinGoalActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.SavingListActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.InvestmentListActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.InvestmentActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.SetGoalActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.MotgageActivity" android:screenOrientation="portrait" />
+        <activity android:name=".profile.AddSavingActivity" android:screenOrientation="portrait" />
+        <activity android:name=".setting.ChangePasswordActivity" android:screenOrientation="portrait" />
+        <activity android:name=".login.SignupActivity" android:screenOrientation="portrait" />
+        <activity android:name=".home.SetLiabilityActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".home.SetIncomeActivity"  android:screenOrientation="portrait"/>
         <activity
             android:name=".calendar.CalendarHomeActivity"
             android:screenOrientation="portrait" />

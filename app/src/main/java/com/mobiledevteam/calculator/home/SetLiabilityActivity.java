@@ -2,6 +2,7 @@ package com.mobiledevteam.calculator.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,9 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -23,11 +27,19 @@ import com.mobiledevteam.calculator.Utils.Common;
 import com.mobiledevteam.calculator.cell.ExpandCategoryAdapter;
 import com.mobiledevteam.calculator.cell.ExpandRepeatAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class SetLiabilityActivity extends AppCompatActivity {
     private ExpandableListView _expandCategory;
     private ExpandableListView _expandRepeat;
     private ExpandCategoryAdapter exCateAdapter;
     private ExpandRepeatAdapter exRepeatAdapter;
+    private LinearLayout _layoutStartdate;
+    private EditText _startdate;
+    private TextView _datetype;
     private EditText _value;
     private EditText _note;
     private ImageView _imgCancel;
@@ -35,7 +47,7 @@ public class SetLiabilityActivity extends AppCompatActivity {
     private int categoryID=100;
     private int repeatID=100;
     private String userid;
-
+    private Calendar mCalendar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +58,21 @@ public class SetLiabilityActivity extends AppCompatActivity {
         _note = (EditText)findViewById(R.id.input_note);
         _imgCancel = (ImageView)findViewById(R.id.img_cancel);
         _imgAdd = (ImageView)findViewById(R.id.img_add);
+        _startdate = (EditText)findViewById(R.id.input_startdate);
+        _layoutStartdate = (LinearLayout) findViewById(R.id.layout_startdate);
+        _datetype = (TextView) findViewById(R.id.txt_datetype);
         userid = Common.getInstance().getUserID();
         exCateAdapter = new ExpandCategoryAdapter(this, Common.getInstance().getmLiabilityCategory());
         exRepeatAdapter = new ExpandRepeatAdapter(this, Common.getInstance().getmRepeatCategory());
+        mCalendar = Calendar.getInstance();
         setReady();
+        setstartdate();
+    }
+    private void setstartdate() {
+        Date start_date = new Date();
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        _startdate.setText(sdf.format(start_date));
     }
     private void setReady(){
         _expandCategory.setDivider(null);
@@ -101,6 +124,12 @@ public class SetLiabilityActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 repeatID = childPosition;
+                _layoutStartdate.setVisibility(View.VISIBLE);
+                if(repeatID == 0){
+                    _datetype.setText("Pay date");
+                }else{
+                    _datetype.setText("Start date");
+                }
                 Log.d("repeatID::", String.valueOf(repeatID));
                 return true;
             }
@@ -118,12 +147,34 @@ public class SetLiabilityActivity extends AppCompatActivity {
                 onAddLiability();
             }
         });
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                mCalendar.set(Calendar.YEAR, year);
+                mCalendar.set(Calendar.MONTH, month);
+                mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+
+        _startdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(SetLiabilityActivity.this, date,mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+    private void updateLabel() {
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        _startdate.setText(sdf.format(mCalendar.getTime()));
     }
     private void onAddLiability() {
         if (!validate())
             return;
         String value = _value.getText().toString();
         String note = _note.getText().toString();
+        String start_date = _startdate.getText().toString();
 
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Bright_Dialog);
         progressDialog.setIndeterminate(true);
@@ -138,7 +189,9 @@ public class SetLiabilityActivity extends AppCompatActivity {
         json.addProperty("value",value);
         json.addProperty("categoryid",categoryID);
         json.addProperty("repeatid",repeatID);
+        json.addProperty("startdate",start_date);
         json.addProperty("note",note);
+
 
         try {
             Ion.with(this)

@@ -66,7 +66,6 @@
                     android:id="@+id/input_note"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:inputType="textEmailAddress"
                     android:textColor="@color/major"
                     android:hint="Note"
                     android:background="@drawable/layout_background_white"
@@ -74,6 +73,38 @@
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_startdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/txt_datetype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Date"
+                    android:textColor="@color/major"
+                    />
+                <EditText
+                    android:id="@+id/input_startdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:textColor="@color/major"
+                    android:hint="2021/06/04"
+                    android:background="@drawable/layout_background_white"
+                    android:drawableStart="@drawable/ic_baseline_date_range_24"
+                    android:drawableTint="@color/major"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
