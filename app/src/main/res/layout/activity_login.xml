@@ -47,9 +47,11 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
+            app:boxStrokeWidth="0dp"
             android:layout_marginBottom="@dimen/_5sdp">
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:imeOptions="actionNext"
@@ -57,6 +59,7 @@
                 android:paddingStart="@dimen/_20sdp"
                 android:paddingEnd="@dimen/_20sdp"
                 android:hint="@string/login_password"
+                android:textColorHint="@color/lightgray"
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>

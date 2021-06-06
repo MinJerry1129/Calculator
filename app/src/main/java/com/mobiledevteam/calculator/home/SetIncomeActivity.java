@@ -109,7 +109,6 @@ public class SetIncomeActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 categoryID = childPosition;
-
                 parent.collapseGroup(groupPosition);
                 Log.d("CategoryID::", String.valueOf(categoryID));
                 return true;
@@ -138,6 +137,7 @@ public class SetIncomeActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 repeatID = childPosition;
+                parent.collapseGroup(groupPosition);
                 _layoutStartdate.setVisibility(View.VISIBLE);
                 if(repeatID == 0){
                     _datetype.setText("Pay date");
@@ -221,6 +221,11 @@ public class SetIncomeActivity extends AppCompatActivity {
                                 String status = result.get("status").getAsString();
                                 if (status.equals("ok")) {
                                     Toast.makeText(getBaseContext(),"Add income Success!", Toast.LENGTH_LONG).show();
+                                    _value.setText("");
+                                    _note.setText("");
+                                    categoryID = 100;
+                                    repeatID = 100;
+                                    _layoutStartdate.setVisibility(View.GONE);
                                 }else {
                                     Toast.makeText(getBaseContext(),"Add Fail", Toast.LENGTH_LONG).show();
                                 }
