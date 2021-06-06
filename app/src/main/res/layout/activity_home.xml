@@ -26,7 +26,7 @@
                         android:id="@+id/txt_seldate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="March 2021"
+                        android:text="This Week"
                         android:textAlignment="center"
                         android:textSize="@dimen/_25sdp"
                         android:textStyle="bold"

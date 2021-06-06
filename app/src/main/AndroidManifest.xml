@@ -23,19 +23,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calculator"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.SavingActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".profile.LoseGoalActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.WinGoalActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.SavingListActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.InvestmentListActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.InvestmentActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.SetGoalActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.MotgageActivity" android:screenOrientation="portrait" />
-        <activity android:name=".profile.AddSavingActivity" android:screenOrientation="portrait" />
-        <activity android:name=".setting.ChangePasswordActivity" android:screenOrientation="portrait" />
-        <activity android:name=".login.SignupActivity" android:screenOrientation="portrait" />
-        <activity android:name=".home.SetLiabilityActivity"  android:screenOrientation="portrait"/>
-        <activity android:name=".home.SetIncomeActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".home.UpdateLiabilityActivity"></activity>
+        <activity android:name=".home.UpdateIncomeActivity" />
+        <activity
+            android:name=".profile.SavingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.LoseGoalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.WinGoalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.SavingListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.InvestmentListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.InvestmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.SetGoalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.MotgageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".profile.AddSavingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".setting.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.SignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.SetLiabilityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.SetIncomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".calendar.CalendarHomeActivity"
             android:screenOrientation="portrait" />

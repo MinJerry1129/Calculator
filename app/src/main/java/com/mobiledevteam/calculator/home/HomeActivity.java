@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -66,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView _listIncome;
     private ListView _listLiability;
     private ListView _listStatus;
+    private TextView _selDate;
     ViewGroup.LayoutParams params;
     private int mIncomeprice = 0;
     private int mLiabilityprice = 0;
@@ -97,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {
         _listIncome = (ListView) findViewById(R.id.list_income);
         _listStatus = (ListView) findViewById(R.id.list_status);
         _listLiability = (ListView) findViewById(R.id.list_liability);
+        _selDate = (TextView)findViewById(R.id.txt_seldate);
         userid = Common.getInstance().getUserID();
         params = _listStatus.getLayoutParams();
 
@@ -175,10 +178,29 @@ public class HomeActivity extends AppCompatActivity {
                             }
                             setListData();
                             setPieData();
+                            setTitle();
                         }
                     });
         }catch(Exception e){
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void setTitle() {
+        if (sel_type == 0){
+            _selDate.setText("Today");
+        }else if(sel_type == 1){
+            _selDate.setText("This Week");
+        }else if(sel_type == 2){
+            _selDate.setText("This 2 Weeks");
+        }else if(sel_type == 3){
+            _selDate.setText("This Month");
+        }else if(sel_type == 4){
+            _selDate.setText("This 3 Months");
+        }else if(sel_type == 5){
+            _selDate.setText("This 6 Months");
+        }else{
+            _selDate.setText("This Week");
         }
     }
 
@@ -196,6 +218,18 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, SetLiabilityActivity.class);
                 startActivity(intent);
+            }
+        });
+        _listIncome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("position::", String.valueOf(mAllIncomeInfo.get(position).getmId()));
+            }
+        });
+        _listLiability.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("position::", String.valueOf(mAllLiabilityInfo.get(position).getmId()));
             }
         });
 
