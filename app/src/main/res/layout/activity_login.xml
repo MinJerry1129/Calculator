@@ -36,19 +36,30 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:hint="@string/login_username"/>
-        <EditText android:id="@+id/input_password"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
-            android:inputType="textPassword"
-            android:textColor="#000"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            android:textColorHint="@color/blackgray"
             android:background="@drawable/layout_background_white"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingEnd="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:hint="@string/login_password"/>
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionNext"
+                android:background="#00000000"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:hint="@string/login_password"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_signin"

@@ -109,6 +109,8 @@ public class SetIncomeActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 categoryID = childPosition;
+
+                parent.collapseGroup(groupPosition);
                 Log.d("CategoryID::", String.valueOf(categoryID));
                 return true;
             }
