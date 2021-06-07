@@ -14,6 +14,8 @@
     <string name="home_income">Set Income</string>
     <string name="home_liabilities">Set Liabilities</string>
 
+    <string name="home_update">Update</string>
+
     <string name="user_saving">Savings</string>
     <string name="user_investment">Investment</string>
     <string name="user_more">More</string>

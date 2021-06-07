@@ -223,12 +223,18 @@ public class HomeActivity extends AppCompatActivity {
         _listIncome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomeActivity.this, UpdateIncomeActivity.class);
+                startActivity(intent);
+                Common.getInstance().setSel_payinfo(mAllIncomeInfo.get(position).getmId());
                 Log.d("position::", String.valueOf(mAllIncomeInfo.get(position).getmId()));
             }
         });
         _listLiability.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomeActivity.this, UpdateLiabilityActivity.class);
+                startActivity(intent);
+                Common.getInstance().setSel_payinfo(mAllLiabilityInfo.get(position).getmId());
                 Log.d("position::", String.valueOf(mAllLiabilityInfo.get(position).getmId()));
             }
         });

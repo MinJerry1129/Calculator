@@ -17,6 +17,8 @@ public class Common {
     private String userID;
     private String login_status="no";
 
+    private String sel_payinfo = "1";
+
 
     public static Common getInstance() {
         return instance;
@@ -43,4 +45,7 @@ public class Common {
 
     public String getLogin_status() {return login_status;}
     public void setLogin_status(String login_status) {this.login_status = login_status;}
+
+    public String getSel_payinfo() {return sel_payinfo; }
+    public void setSel_payinfo(String sel_payinfo) { this.sel_payinfo = sel_payinfo;}
 }
