@@ -10,7 +10,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ import com.mobiledevteam.calculator.cell.IncomeListAdapter;
 import com.mobiledevteam.calculator.cell.LiabilityListAdapter;
 import com.mobiledevteam.calculator.cell.PayInfo;
 import com.mobiledevteam.calculator.home.HomeActivity;
+import com.mobiledevteam.calculator.home.UpdateIncomeActivity;
+import com.mobiledevteam.calculator.home.UpdateLiabilityActivity;
 import com.mobiledevteam.calculator.profile.UserHomeActivity;
 import com.mobiledevteam.calculator.setting.SettingHomeActivity;
 
@@ -47,6 +51,8 @@ public class CalendarHomeActivity extends AppCompatActivity {
     private ListView _listIncome;
     private ListView _listLiability;
     private ListView _listStatus;
+    String date_string = "";
+    String date_today = "";
     ViewGroup.LayoutParams params;
     private String userid;
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,9 +73,17 @@ public class CalendarHomeActivity extends AppCompatActivity {
         _listLiability = (ListView) findViewById(R.id.list_liability);
         userid = Common.getInstance().getUserID();
         params = _listStatus.getLayoutParams();
+        date_string = dateFormat.format(new Date());
+        date_today = dateFormat.format(new Date());
         setReady();
-        getData(dateFormat.format(new Date()));
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getData(date_string);
+    }
+
     private void getData(String date_string) {
 
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Bright_Dialog);
@@ -128,9 +142,36 @@ public class CalendarHomeActivity extends AppCompatActivity {
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(@NotNull EventDay eventDay) {
-
-                String date_string = dateFormat.format(eventDay.getCalendar().getTime());
+                date_string = dateFormat.format(eventDay.getCalendar().getTime());
                 getData(date_string);
+            }
+        });
+        _listIncome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (date_today.compareTo(date_string) < 0){
+                    Log.d("date_compare::", "no");
+                }else{
+                    Intent intent = new Intent(CalendarHomeActivity.this, UpdateIncomeActivity.class);
+                    startActivity(intent);
+                    Common.getInstance().setSel_payinfo(mAllIncomeInfo.get(position).getmId());
+                    Log.d("date_compare::", "yes");
+                }
+
+            }
+        });
+        _listLiability.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (date_today.compareTo(date_string) < 0){
+                    Log.d("date_compare::", "no");
+                }else{
+                    Intent intent = new Intent(CalendarHomeActivity.this, UpdateLiabilityActivity.class);
+                    startActivity(intent);
+                    Common.getInstance().setSel_payinfo(mAllLiabilityInfo.get(position).getmId());
+                    Log.d("date_compare::", "yes");
+                }
+
             }
         });
     }

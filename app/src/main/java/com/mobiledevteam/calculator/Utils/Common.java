@@ -19,7 +19,6 @@ public class Common {
 
     private String sel_payinfo = "1";
 
-
     public static Common getInstance() {
         return instance;
     }

@@ -23,7 +23,7 @@ import java.util.List;
 public class IncomeListAdapter extends ArrayAdapter<PayInfo> {
     private Context mContext;
     private List<PayInfo> allPayinfoList = new ArrayList<>();
-    private ArrayList<Category> mCategory= Common.getInstance().getmIncomeCategory();;
+    private ArrayList<Category> mCategory= Common.getInstance().getmIncomeCategory();
     public IncomeListAdapter(@NonNull Context context, ArrayList<PayInfo> list) {
         super(context, 0, list);
         mContext = context;

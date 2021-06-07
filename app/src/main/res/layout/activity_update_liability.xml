@@ -70,7 +70,7 @@
             android:src="@drawable/ic_baseline_attach_money_24"
             app:tint="@color/second" />
         <EditText
-            android:id="@+id/txt_money"
+            android:id="@+id/txt_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
