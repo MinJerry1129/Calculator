@@ -22,7 +22,7 @@
     <string name="user_mortgage">Mortgage</string>
     <string name="user_amount">Amount</string>
     <string name="user_period">Period</string>
-    <string name="user_calculate">Calculate</string>
+    <string name="user_calculate">Calculators/ToolBox</string>
     <string name="user_setagoal">Set a Goal</string>
 
     <string name="setting_cuser">Change Username</string>
